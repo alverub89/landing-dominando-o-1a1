@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dominando o 1:1 | Forja Academy</title>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1470&q=80') center 25%/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero a {
+      background: #ff4500;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .hero a:hover {
+      background: #cc3700;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: #ff4500;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .section.dark {
+      background-color: #f4f4f4;
+    }
+
+    .section.dark p {
+      color: #111;
+    }
+
+    .module {
+      margin-bottom: 30px;
+    }
+
+    .module h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .module ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .module ul li {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .cta-button {
+      display: block;
+      width: fit-content;
+      background: #ff4500;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 30px auto 0;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #cc3700;
+    }
+  
+.carousel-section {
+  background: #f4f7fb;
+  padding: 60px 20px;
+  text-align: center;
+}
+.carousel-section h2 {
+  color: #ff4500;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+.carousel-wrapper {
+  position: relative;
+}
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 40px;
+}
+.testimonial {
+  background: linear-gradient(180deg, #1f1f1f 0%, #ff4500 100%);
+  color: white;
+  border-radius: 16px;
+  flex: 0 0 300px;
+  padding: 30px 20px;
+  scroll-snap-align: center;
+  min-height: 280px;
+}
+.testimonial p {
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.testimonial .author {
+  font-size: 15px;
+  font-weight: bold;
+}
+.testimonial .stars {
+  color: gold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #a0a0a0;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 2;
+}
+.nav-btn:hover {
+  background: #666;
+}
+.nav-btn.prev {
+  left: 0;
+}
+.nav-btn.next {
+  right: 0;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+.carousel-container {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+#oferta h2 {
+  font-size: 32px;
+  color: #c93f02;
+  margin-bottom: 10px;
+}
+#oferta p {
+  font-size: 18px;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+#oferta h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+#oferta p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+#oferta .cta-button {
+  background-color: #2c3e50;
+}
+#oferta .cta-button:hover {
+  background-color: #1a242f;
+}
+
+/* Newsletter Popup */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+}
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.popup-content h3 {
+  color: #2c3e50;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.popup-content p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.popup-content input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.popup-content button {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.popup-content button:hover {
+  background-color: #1a242f;
+}
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
+
+.popup-content {
+  position: relative;
+}
+
+.section.highlight {
+  background-color: #eaf1f8;
+}
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #2c3e50;
+  text-align: center;
+  padding: 10px;
+  z-index: 999;
+}
+.sticky-cta a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .sticky-cta { display: none; }
+}
+
+#cronometro-flutuante {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#cronometro-flutuante {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 60px;
+  background: linear-gradient(90deg, rgba(44,62,80,0.9), rgba(44,62,80,0.8));
+  color: white;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 50px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="overlay"></div>
+<div class="hero-content">
+<h1>DOMINANDO O 1:1</h1>
+<p>Transforme conversas com seu líder em momentos de evolução real.</p>
+<a href="#inscricao">Quero aprender agora</a>
+</div>
+</div>
+<div class="section" id="dor-identificacao">
+<h2>Você já saiu de um 1:1 frustrado?</h2>
+<p>Sentiu que perdeu tempo? Que a conversa girou em torno de tarefas e não de desenvolvimento?</p>
+<p>Ou pior: saiu com mais dúvidas do que quando entrou, sem clareza dos próximos passos, e com aquela sensação de que não está sendo visto?</p>
+<p>Se sim, você não está sozinho. A maioria das pessoas não foi preparada para tirar o melhor de uma conversa com seu líder. Mas isso pode mudar — e é mais simples do que parece.</p>
+<a class="cta-button" href="#inscricao">Quero virar esse jogo</a>
+</div>
+<div class="section dark" id="transformacao">
+<h2>Imagine sair de um 1:1 com clareza, confiança e direção.</h2>
+<p>Você sabe exatamente o que perguntar, como trazer assuntos importantes para a mesa e ainda demonstra maturidade e protagonismo.</p>
+<p>Essa conversa vira uma ponte para novas oportunidades, visibilidade real e até crescimento na carreira.</p>
+<p>É isso que o <strong>Dominando o 1:1</strong> vai te ensinar: como transformar uma simples reunião em um ponto de virada profissional.</p>
+<a class="cta-button" href="#inscricao">Quero conquistar meu espaço</a>
+</div>
+<div class="section" id="conteudo">
+<h2>O que você vai aprender:</h2>
+<div class="module">
+<h3>Módulo 1 – Por que o 1:1 é tão importante?</h3>
+<ul>
+<li>O papel do 1:1 na sua carreira</li>
+<li>O que líderes esperam (mas não falam)</li>
+<li>Como essa conversa molda sua reputação</li>
+</ul>
+</div>
+<div class="module">
+<h3>Módulo 2 – Quais são os tipos de 1:1?</h3>
+<ul>
+<li>1:1 de alinhamento tático (curto prazo, entregas)</li>
+<li>1:1 de desenvolvimento (visão de futuro e carreira)</li>
+<li>1:1 de feedback (pontual ou recorrente)</li>
+<li>1:1 de crise ou performance</li>
+<li>Como reconhecer o tipo de conversa mesmo quando não está explícito</li>
+</ul>
+</div>
+<div class="module">
+<h3>Módulo 3 – Preparação estratégica</h3>
+<ul>
+<li>Checklist prático de preparação</li>
+<li>Como trazer os temas certos para a conversa</li>
+<li>Construindo sua narrativa com confiança</li>
+</ul>
+</div>
+<div class="module">
+<h3>Módulo 4 – Durante a conversa</h3>
+<ul>
+<li>Como conduzir o 1:1 de forma madura</li>
+<li>Linguagem verbal e não-verbal</li>
+<li>O que fazer quando o líder não está preparado</li>
+</ul>
+</div>
+<div class="module">
+<h3>Módulo 5 – Acompanhamento e alavancagem</h3>
+<ul>
+<li>Como manter o que foi combinado</li>
+<li>Reforçando sua evolução com dados e fatos</li>
+<li>Usando o histórico de 1:1 a seu favor</li>
+</ul>
+</div>
+<a class="cta-button" href="#inscricao">Quero dominar o 1:1 agora</a>
+</div>
+<div class="carousel-section" id="prova-social">
+<h2>Profissionais como você já estão colhendo os resultados</h2>
+<div class="carousel-wrapper">
+<button class="nav-btn prev">❮</button>
+<div class="carousel-container">
+<div class="testimonial"><p>"Depois do curso, meu 1:1 deixou de ser só um alinhamento e virou uma conversa estratégica. Fui promovido em 3 meses."</p><div class="author">Lucas Andrade, Desenvolvedor Júnior</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>"Consegui trazer temas importantes para a mesa e meu gestor passou a me enxergar como alguém pronto para novos desafios."</p><div class="author">Marina Costa, Analista Pleno</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>"Passei a usar os 1:1 como espaço de reflexão, aprendizado e posicionamento. Me sinto mais seguro e relevante."</p><div class="author">Thiago Menezes, Engenheiro de Dados Sênior</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>"Nunca ninguém tinha me ensinado isso. Agora entendo como usar cada tipo de 1:1 para crescer e contribuir melhor."</p><div class="author">Juliana Ramos, UX Designer</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>"Antes eu só respondia perguntas, agora levo temas prontos e saio com clareza do que fazer e o que esperar."</p><div class="author">Carlos Nascimento, Product Owner</div><div class="stars">★★★★★</div></div>
+<div class="testimonial"><p>"Achei que esse curso fosse básico, mas me surpreendeu. Direto, prático e impactante."</p><div class="author">Renata Oliveira, Cientista de Dados</div><div class="stars">★★★★★</div></div>
+</div>
+<button class="nav-btn next">❯</button>
+</div>
+<a class="cta-button" href="#inscricao">Quero transformar meu 1:1</a>
+</div>
+<div class="section" id="bonus">
+<h2>Bônus exclusivo para quem garantir a vaga agora</h2>
+<p>Além do curso completo, você ainda leva dois materiais práticos para acelerar sua evolução:</p>
+<ul style="text-align: left; font-size: 18px; color: #333; max-width: 700px; margin: 0 auto; padding-left: 20px;">
+<li>📘 Manual das Perguntas Poderosas: mais de 30 perguntas estratégicas para turbinar seu 1:1</li>
+<li>📊 Radar de Acompanhamento: planilha prática para organizar evolução e ações pós-1:1</li>
+</ul>
+<a class="cta-button" href="#inscricao">Quero garantir meu bônus</a>
+</div>
+<div class="section highlight" id="oferta">
+<h2>De R$197,90 por apenas R$79,90</h2><p><strong>Oferta disponível por tempo limitado:</strong> <span id="countdown">02h 00min</span></p>
+<p>Você vai dominar as conversas mais importantes da sua carreira por menos do que um jantar fora.</p>
+<p>Oferta válida somente para os <strong>100 primeiros alunos</strong>. Aproveite agora enquanto ainda está disponível.</p>
+<a class="cta-button" href="https://hotmart.com/SEU-LINK-AQUI">Quero garantir minha vaga por R$79,90</a>
+</div>
+<!-- Newsletter Popup -->
+<div class="popup" id="newsletter-popup">
+<div class="popup-content">
+<span class="close-btn" onclick="document.getElementById('newsletter-popup').style.display='none'">×</span>
+<h3>🚀 Quer se desenvolver ainda mais?</h3>
+<p>Assine a newsletter da Forja Academy e receba conteúdos práticos para acelerar sua carreira e se destacar com confiança.</p>
+<form>
+<input placeholder="Digite seu melhor e-mail" required="" type="email"/>
+<button type="submit">Quero receber os conteúdos</button>
+</form>
+</div>
+</div>
+<script>
+// Abrir popup ao chegar na oferta
+document.addEventListener("DOMContentLoaded", function() {
+  const oferta = document.getElementById("oferta");
+  const popup = document.getElementById("newsletter-popup");
+  let popupShown = false;
+
+  window.addEventListener("scroll", function() {
+    const ofertaTop = oferta.getBoundingClientRect().top;
+    if (ofertaTop < window.innerHeight && !popupShown) {
+      popup.style.display = "block";
+      popupShown = true;
+    }
+  });
+});
+
+
+document.querySelector('#newsletter-popup .close-btn').addEventListener('click', function() {
+  document.getElementById('newsletter-popup').style.display = 'none';
+});
+</script>
+<div class="section dark" id="valor">
+<h2>O que você leva ao se inscrever:</h2>
+<ul style="font-size:18px; max-width:700px; margin:0 auto; padding-left:20px; text-align:left;">
+<li>✔ Acesso completo ao curso <strong>Dominando o 1:1</strong></li>
+<li>✔ Certificado de conclusão pela Hotmart</li>
+<li>✔ <strong>Manual das Perguntas Poderosas</strong></li>
+<li>✔ <strong>Radar de Acompanhamento</strong> (Planilha Excel)</li>
+<li>✔ Acesso vitalício e atualizações futuras</li>
+<li>✔ Garantia de 7 dias incondicional</li>
+<li>✔ Suporte direto na plataforma</li>
+</ul>
+<a class="cta-button" href="#inscricao">Quero tudo isso agora</a>
+</div>
+<div class="section dark" id="faq">
+<h2>Dúvidas frequentes</h2>
+<div style="max-width: 800px; margin: 0 auto; text-align: left;">
+<p><strong>1. Por quanto tempo terei acesso ao curso?</strong><br/>
+    Acesso vitalício! Você pode assistir quantas vezes quiser e no seu tempo.</p>
+<p><strong>2. Recebo certificado?</strong><br/>
+    Sim! Ao concluir o curso, você recebe um certificado de conclusão reconhecido pela Hotmart.</p>
+<p><strong>3. E se eu não gostar?</strong><br/>
+    Você tem 7 dias de garantia incondicional. Se não curtir, é só pedir reembolso e devolvemos 100% do valor.</p>
+<p><strong>4. O curso tem suporte?</strong><br/>
+    Sim! Você pode enviar dúvidas direto na plataforma e ainda recebe conteúdos complementares por e-mail.</p>
+<p><strong>5. Quais formas de pagamento posso usar?</strong><br/>
+    Cartão de crédito (com parcelamento), boleto bancário ou Pix. Tudo seguro via Hotmart.</p>
+<p><strong>6. É para mim mesmo sendo Júnior?</strong><br/>
+    Com certeza! O curso foi feito especialmente para quem quer acelerar o crescimento profissional desde o início da carreira.</p>
+</div>
+<a class="cta-button" href="#inscricao">Quero garantir minha vaga agora</a>
+</div>
+<div class="section" id="cta-final">
+<h2>Pronto para transformar seu 1:1?</h2>
+<p>Garanta agora seu acesso ao curso e aos bônus exclusivos antes que as vagas se esgotem.</p>
+<a class="cta-button" href="#inscricao">Sim, quero dominar o 1:1</a>
+</div>
+<div class="section dark" id="newsletter-final">
+<h2>Receba conteúdos exclusivos da Forja Academy</h2>
+<p>Assine a nossa newsletter e receba reflexões, provocações e materiais práticos direto no seu e-mail.</p>
+<form style="max-width: 500px; margin: 0 auto;">
+<input placeholder="Digite seu melhor e-mail" required="" style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #ccc; border-radius:6px;" type="email"/>
+<button style="background-color:#2c3e50; color:white; padding:12px 20px; border:none; border-radius:6px; font-size:16px;" type="submit">Quero receber os conteúdos</button>
+</form>
+</div>
+<div class="sticky-cta">
+<a href="#inscricao">💼 Quero garantir minha vaga</a>
+</div>
+<script>
+// Simulando contagem regressiva
+function startCountdown() {
+  const end = new Date().getTime() + 2 * 60 * 60 * 1000; // 2h
+  const timer = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = end - now;
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").innerHTML = "00:00";
+      return;
+    }
+    const h = Math.floor((distance / (1000 * 60 * 60)));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById("countdown").innerHTML = ("0" + h).slice(-2) + "h " + ("0" + m).slice(-2) + "min";
+  }, 1000);
+}
+startCountdown();
+</script>
+<div id="cronometro-flutuante">
+  ⏳ Oferta disponível por tempo limitado: <span id="contador">05:00</span>
+</div>
+<script>
+function iniciarCronometro(duracao, display) {
+  let timer = duracao, minutos, segundos;
+  const intervalo = setInterval(function () {
+    minutos = parseInt(timer / 60, 10);
+    segundos = parseInt(timer % 60, 10);
+    minutos = minutos < 10 ? "0" + minutos : minutos;
+    segundos = segundos < 10 ? "0" + segundos : segundos;
+    display.textContent = minutos + ":" + segundos;
+    if (--timer < 0) {
+      clearInterval(intervalo);
+      display.textContent = "00:00";
+    }
+  }, 1000);
+}
+document.addEventListener("DOMContentLoaded", function () {
+  const cincoMinutos = 60 * 5;
+  const display = document.querySelector('#contador');
+  iniciarCronometro(cincoMinutos, display);
+});
+</script></body>
+</html>
