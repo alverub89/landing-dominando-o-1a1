@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Que pena 😢 | Forja Academy</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #2c3e50;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input[type="email"] {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 12px;
+      background-color: #2c3e50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1a242f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Que pena, as vagas se esgotaram 😢</h1>
+    <p>Mas não se preocupe! Deixe seu e-mail abaixo e avisaremos assim que novas vagas forem abertas.</p>
+    <form name="espera-newsletter" method="POST" data-netlify="true">
+      <input type="email" name="email" placeholder="Digite seu melhor e-mail" required />
+      <button type="submit">Quero ser avisado(a)</button>
+    </form>
+  </div>
+</body>
+</html>
