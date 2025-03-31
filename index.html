@@ -347,6 +347,45 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   backdrop-filter: blur(4px);
 }
+
+#floating-timer {
+    position: fixed;
+    bottom: 70px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+#newsletter-final form {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#newsletter-final input[type="email"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    flex: 1;
+    min-width: 220px;
+}
+#newsletter-final button {
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    background-color: #1f2937;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
